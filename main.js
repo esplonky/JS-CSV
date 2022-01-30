@@ -9,6 +9,19 @@ $(document).ready(function(){
 
 function processData(allText){
     var record_num = 3;
-    var entries = allText[0].split(',');
+    var allTextLines = allText.split(/\r\n|\n/);
+    var entries = allTextLines[0].split(',');
     var lines = [];
-}
+
+    for (var i=1; i<allTextLines.length; i++){
+        var data = allTextLines[i].split(',');
+        if (data.length == Headers.length) {
+            var tarr = [];
+            
+            for (var j=0; j<Headers.length; j++){
+            }
+                 
+            
+            }
+        }
+    }
