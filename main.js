@@ -8,6 +8,8 @@ $(document).ready(function(){
 });
 
 function processData(allText){
+    const para = document.createElement("p");
+    const elemBody = document.getElementById("nameNumAdd")
     var record_num = 3;
     var allTextLines = allText.split(/\r\n|\n/);
     var entries = allTextLines[0].split(',');
@@ -15,13 +17,10 @@ function processData(allText){
 
     for (var i=1; i<allTextLines.length; i++){
         var data = allTextLines[i].split(',');
-        if (data.length == Headers.length) {
-            var tarr = [];
+            for (var j=0; j<data.length; j++){
             
-            for (var j=0; j<Headers.length; j++){
-            }
-                 
-            
+                var node = document.createTextNode(data[j]);
+                para.appendChild(node);
             }
         }
     }
