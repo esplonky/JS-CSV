@@ -5,28 +5,48 @@
 <title>Page Title</title>
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type = "text/javascript" src="jquery-3.6.0.js"></script>
-<!---<script type = "text/javascript" src="second.js"></script>--->
+<!--<script type = "text/javascript" src="second.js"></script>-->
 <script type = "text/javascript" src="jquery.csv.js"></script>
 </head>
 <body id="pageBody">
 
 <div id="nameNumAdd" style="color:black">
-    <script>
-        var listOfNames = $.csv.toArray("./test.csv")
-        var bodyElem = document.getElementById("nameNumAdd");
-        console.log(bodyElem);
-        console.log(listOfNames[0]);
-        console.log(listOfNames[1]);
-        console.log(listOfNames[2]);
-    
-        function printNamesOnScreen(namesList){
-                for(var i=0; i<3; i++){
-                    console.log(namesList.i);
-                   var content = document.createTextNode(namesList.i);
-                }
+<p id="name"></p>
+<p id="number"></p>
+<p id="address"></p>
+<script>
+$(document).ready(function() {
+    $.ajax({
+            type: "GET",
+            url: "test.csv",
+            dataType: "text",
+            success: function(data){
+                    processData(data);
+            }
+    });
+});
+
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    var lines = [];
+  
+    for (var i = 0; i < allTextLines.length; i++) {
+      var data = allTextLines[i].split(',');
+      if (data.length == headers.length) {
+  
+        var tarr = [];
+        for (var j = 0; j < headers.length; j++) {
+          tarr.push(headers[j] + ":" + data[j]);
         }
-        console.log(listOfNames);
-        printNamesOnScreen(listOfNames);</script>
+        lines.push(tarr);
+        console.log(tarr);
+      }
+    }
+    console.log(lines);
+    alert(lines);
+  }
+  </script>
 </div>
 
 </body>
