@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#intenName {
+  font-size:100px;
+  color:green;
+  text-align: center;
+}
